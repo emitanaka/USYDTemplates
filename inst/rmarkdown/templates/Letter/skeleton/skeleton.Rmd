@@ -1,0 +1,25 @@
+---
+from: Genghis Khan
+fromqualifications: BSci(Hons), PhD
+fromtitle: Associate Professor
+fromWWW: genghiskhan.com
+fromemail: Genghis.Khan@sydney.edu.au
+fromphone: +61 2 9123 4567
+fromsignature: sigfile.png
+toname: Helen of Troy
+toaddress: University of Greece\newline Athens
+opening: Dear Helen,
+closing: Best wishes,
+spacing: 1.4
+output: USYDTemplates::letter
+---
+
+<!-- 
+The template is originally written by Rob J Hyndman. 
+https://github.com/robjhyndman/MonashEBSTemplates
+
+The difference lies in the change to USYD branding. 
+--> 
+
+I am writing to ask you to \dots
+

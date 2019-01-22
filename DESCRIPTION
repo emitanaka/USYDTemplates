@@ -1,0 +1,12 @@
+Package: USYDTemplates
+Version: 0.1
+Title: The University of Sydney R Markdown Templates
+Description: This package provides The University of Sydney R Markdown templates for a letter, presentation slides, and teaching slides.
+Authors@R: c(person("Emi", "Tanaka", ,"dr.emi.tanaka@gmail.com", c("aut", "cre")), person("Garth", "Tarr", ,"garth.tarr@gmail.com", c("aut")))
+Imports: bookdown, xaringan
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+ByteCompile: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1

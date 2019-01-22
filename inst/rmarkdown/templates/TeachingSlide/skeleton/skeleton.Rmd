@@ -1,0 +1,1099 @@
+---
+title: "Xaringan"
+subtitle: "A theme for the University of Sydney"
+author: "Garth Tarr"
+date: "5 November 2018"
+output:
+  xaringan::moon_reader:
+    css: ["default", "assets/sydney-fonts.css", "assets/sydney.css"]
+    self_contained: false # if true, fonts will be stored locally
+    seal: true # show a title slide with YAML information
+    includes:
+      in_header: "assets/mathjax-equation-numbers.html"
+    nature:
+      beforeInit: ["assets/remark-zoom.js", "https://platform.twitter.com/widgets.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9' # alternatives '16:9' or '4:3' or others e.g. 13:9
+      navigation:
+        scroll: false # disable slide transitions by scrolling
+---
+
+```{r, load_refs, echo=FALSE, cache=FALSE}
+library(RefManageR)
+BibOptions(check.entries = FALSE, 
+           bib.style = "authoryear", 
+           cite.style = 'authoryear', 
+           style = "markdown",
+           hyperlink = FALSE, 
+           dashed = FALSE)
+myBib <- ReadBib("assets/example.bib", check = FALSE)
+```
+
+## Installing `r icon::fa("download",pull = "right")`
+
+The **xaringan** package is on CRAN, but I recommend installing the development release from `r icon::fa("github")`
+
+```{r, eval = FALSE}
+devtools::install_github('yihui/xaringan')
+```
+
+.pull-left[
+You will also need two other CSS files for the custom University of Sydney styling:
+
+- `sydney-fonts.css`
+- `sydney.css`
+]
+.pull-right[
+If you want the University Logo to show up on the title slide, you'll also need
+
+- `USydLogo-black.svg`
+]
+
+These are available in the assets folder of the GitHub code repository [`r icon::fa("github")` `garthtarr/sydney_xaringan`](http://github.com/garthtarr/sydney_xaringan/assets)
+
+To make things easy to get started, I recommend downloading a copy of the `sydney_xaringan` repo [`r icon::fa("file-archive")`](https://github.com/garthtarr/sydney_xaringan/archive/master.zip) and make changes to the template. 
+
+---
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
+background-size: 250px
+background-position: 50% 75%
+
+## xaringan
+
+- Press `h` or `?` to see the possible ninjutsu you can use in remark.js.
+
+- You can see all the goodies like this (hint press `p`).
+
+- Check out more in-depth tutorial [here](https://slides.yihui.name/xaringan/#1)
+
+
+---
+
+## Why xaringan/remark.js? `r icon::fa("check-circle", pull = "right")`
+
+- Printing (in Google Chrome) is a lot more reliable for xaringan/remark.js
+- The customisation of the CSS and using it is a lot easier in xaringan/remark.js
+- You almost never need to write any manual HTML chunks (e.g. `<div style="text-align: center;"></div>`)
+- With remark.js' Markdown, you can add arbitrary CSS classes to elements using syntax `.className[elements]`, which is very handy compared to `<span class="className"></span>`
+- You can write slide notes under three question marks `???`. These notes are only displayed in the presentation mode, and only the speaker can see these notes. 
+- The keyboard shortcuts: press keys like `P` (presentation mode), `C` (clone slides to a new window, useful for presentation mode), `B` (black out), `M` (mirror the slide), and `H` (help), etc.
+
+More: [yihui.name/en/2017/08/why-xaringan-remark-js/](https://yihui.name/en/2017/08/why-xaringan-remark-js/)
+
+---
+
+## Why **not** xaringan/remark.js? `r icon::fa("times-circle", pull = "right")`
+
+- It is difficult to generate self-contained HTML presentation files. I.e. you'll need access to the internet for it to work properly.  However, the quality of the print to pdf means that you'll have excellent pdf backup slides but it will lack animation, gifs, etc.
+
+- You can't embed shiny apps (easily) and not all htmlwidgets are guaranteed to work.
+
+- I have a lot of ioslides and beamer content... but it's not so hard to translate from ioslides to xaringan (beamer's another story).
+
+- I haven't worked out how to activate slide scrolling.  I've looked into it but I'm not sure if it's possible.  Possibly a good thing, slide scrolling made me lazy with results presentation, and often caused issues with printing.
+
+---
+
+## googleVis
+
+Embedded by exporting to HTML and including as an iframe.
+
+```{r gvisMergeExample, results='asis', echo=FALSE, message=FALSE}
+library(googleVis)
+Geo <- gvisGeoChart(Exports, locationvar='Country', colorvar='Profit') 
+cat(Geo$html$chart, file="Geo.html")
+```
+<iframe src = "Geo.html" width = "100%" height = "90%" frameborder="0"></iframe>
+
+---
+
+## Content boxes `r icon::fa("box", pull = "right")`
+
+.content-box-blue[This is a `.content-box-blue[]` chunk.
+
+]
+
+--
+
+If you have just a few words, it only highlights the words:
+
+
+.content-box-army[`.content-box-army[]`] .content-box-yellow[`.content-box-yellow[]`]
+
+.content-box-red[`.content-box-red[]`] .content-box-purple[`.content-box-purple[]`]
+
+--
+
+If the text includes a new line character, you get a 100% width box.  I've used `.columns-2[]` it's 100% of the column width.
+
+.columns-2[
+.content-box-gray[
+`.content-box-gray[]`
+]
+.content-box-green[
+`.content-box-green[]`
+]
+]
+
+---
+
+## Quotes `r icon::fa("quote-right", pull = "right")`
+
+.small[
+We can include **block quotes** using<br>
+`<blockquote>Quote goes here</blockquote>` 
+
+or<br>
+`> Quote goes here`
+
+or `.blockquote[Quote here]`
+]
+.pull-left[
+
+<blockquote>
+Statistics is the grammar of science. 
+.right[-- <cite>Karl Pearson</cite>]
+</blockquote>
+
+.blockquote[Quote]
+
+> Quote quote  
+]
+
+
+
+.pull-right[.small[
+```
+<blockquote>
+Statistics is the grammar of science. 
+.right[-- <cite>Karl Pearson</cite>]
+</blockquote>
+
+
+
+.blockquote[Quote]
+
+
+
+> Quote quote
+```
+
+]]
+
+---
+
+## Statistical thinking
+
+Many of the data science slides have a quote-like box for **statistical thinking** or **aim**.
+.pull-left[
+.small[
+```
+.blockquote[
+### `r knitr::inline_expr('icon::fa("comment-dots")')` Statistical 
+thinking
+- Point 1
+]
+```
+]
+.blockquote[
+### `r icon::fa("comment-dots")` Statistical thinking
+- Point 1
+]
+
+]
+.pull-right[
+
+.small[
+```
+.blockquote[
+### `r knitr::inline_expr('icon::fa("location-arrow")')` Aim
+- Point 1
+]
+```
+]
+.blockquote[
+### `r icon::fa("location-arrow")` Aim
+- Point 1
+]
+
+]
+
+.footnote[
+This code is a bit easier to write than the old way of doing it.
+```
+<div class="thinkingbox"> 
+### <span class="fa-stack fa"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-location-arrow fa-stack-1x fa-inverse"></i></span> Aim
+- Point 1
+</div>
+```
+]
+
+---
+
+## Scrolling R output
+
+.scroll-output[
+I tend to think it's best to format the slide such that everything you want to show is visible, however there can be times when the R output is extensive, and it's not important that the whole lot is printable (i.e. won't appear on the pdf version of the slides), but you might want to be able to scroll down interactively during the presentation.  This can be done using the `.scroll-output[]` class.
+
+```{r}
+step(lm(Fertility~.,data = swiss))
+```
+]
+
+---
+
+## Scrolling R output
+
+If you just want a section of the output to be scrollable (not the whole page).  You need to define how many lines you want the "box" to show.  There are classes for `.scroll-box-8[]` for 8 lines, `.scroll-box-10[]` for 10 lines, ... , `.scroll-box-20[]` for 20 lines.
+
+.pull-left[
+`.scroll-box-8[]` 
+.scroll-box-8[
+```{r}
+swiss[,1:3]
+```
+]]
+.pull-right[
+`.scroll-box-14[]` 
+.scroll-box-14[
+```{r}
+swiss[,1:3]
+```
+]]
+
+---
+
+## Lists, increments and footnotes`r icon::fa("list", pull = "right")`
+
+.pull-left[
+
+- Unordered lists<sup>1</sup>
+  - can be created using "-"
+  - and they can be nested using 2 or 4 space.fn[2]
+      - deep nested 
+  - original nesting level
+
+
+### Ordered list
+
+1. one
+2. two 
+3. three
+
+
+
+]
+
+.footnote[
+[1] Footnotes are not automatic.  In the text use `<sup>1</sup>` or `.fn[1]`
+
+[2] At the end of the slide `.footnote[[1] Text associated with footnote 1.]`
+]
+
+
+
+--
+
+.pull-right[
+To get an incremental slide use two dashes `--` on a new line with no trailing white space. If the dashes aren't on their own line or there's a white space after it won't work.
+
+.font80[.content-box-purple[
+The two dash increments don't work inside class calls.  For example, you can't have an increment in a  `.pull-right[...]` block or in a `.columns-2[...]` block as the dashes are not considered to be special in the markdown processing when they're inside one of these blocks.
+]]
+
+]
+
+
+
+
+
+
+
+
+---
+
+## Icons `r icon::fa("exclamation", pull = "right")`
+
+Perhaps the easiest way to include icons in your xaringan presentations is through the **icon** package. The **icon** package lets you include [font awesome](http://fontawesome.io), [academicons](http://jpswalsh.github.io/academicons/) and [ionicons](http://ionicons.com) into R Markdown documents.
+
+It's not yet on CRAN, so install it using 
+
+```{r, eval = FALSE}
+devtools::install_github("ropenscilabs/icon")
+```
+
+--
+
+.pull-left[
+
+```{r}
+icon::fa("rocket")
+icon::fa("spinner", size = 2, 
+         animate = "spin")
+```
+
+]
+
+--
+
+.pull-right[
+
+Inline expressions also work. 
+
+`r icon::fa("bell")` created using 
+
+`` `r knitr::inline_expr('icon::fa("bell")')` ``
+
+
+<br>
+
+For more info see [the `r icon::fa("github")` repo](https://github.com/ropenscilabs/icon).
+
+]
+
+---
+
+## Data tables `r icon::fa("table", pull = "right")`
+
+.font80[
+```{r, message = FALSE}
+library("DT"); library("dplyr")
+iris %>% 
+  DT::datatable(class = "compact", rownames = FALSE, extensions = "Buttons",
+                options = list(dom = 'tBp', buttons = c("csv","excel"), 
+                               pageLength = 8)) %>% 
+  DT::formatRound(1:4, digits = 1) 
+```
+]
+
+---
+
+## FAQ `r icon::fa("question-circle", pull = "right")`
+
+<blockquote>
+How do I start a new slide? 
+</blockquote>
+
+Using three dashes at the start of a new line <code>---</code>
+
+--
+
+<blockquote>
+I have three dashes but it's not starting a new slide.  
+</blockquote>
+
+The three dashes need to be on their own line with **no spaces after them**
+
+--
+
+<blockquote>
+I'm giving my presentation but the text is too small. HELP!
+</blockquote>
+
+By default remark.js disables browser based zooming. I've found and modified a hack to re-enable it, but it's not perfect. [`remark-zoom.js`](https://github.com/William-Yeh/remark-zoom) I'm also open to increasing the default font size - need to test it out on a range of displays.
+
+
+---
+background-image: url("assets/title-image1.jpg")
+background-position: 100% 50%
+background-size: 50% 75%
+
+## Background images
+
+.pull-left[
+
+- We can place images anywhere on the screen by using `background-image` in conjunction with <br>`background-position`
+- The image, size and position are defined immediately after the `---` that starts a new slide.
+
+
+Assuming `image.jpg` is in the same folder as your `.Rmd` file, the code is:
+
+```
+---
+background-image: url("image.jpg")
+background-position: 100% 50%
+background-size: 50% 75%
+
+## Background images
+
+.pull-left[
+
+... Left column text here ...
+
+]
+
+```
+
+]
+
+---
+class: center, middle
+
+# Text adjustments
+
+It is also possible to change the .blue[color] of any text by using `.color[text here]`
+
+--
+
+For example `.grey[grey]` will make text .grey[grey].
+
+--
+
+We can do this with white, .brand-red[Sydney master brand red], .brand-blue[Sydney master brand blue], .brand-yellow[Sydney master brand yellow], .brand-charcoal[Sydney master brand charcoal], .brand-grey[Sydney master brand grey], .black[black], .red[red], .blue[blue], .green[green], .yellow[yellow], .orange[orange], .purple[purple], .grey[grey].
+
+--
+
+To make text stand out we can use standard markdown `**text**` like **this** 
+or `.bold[this]` .bold[this].  Or italics using `_italic_` _italic_.
+
+You can string together these formats, e.g. `.blue[.bold[...]]` 
+to get .blue[.bold[blue and bold text]].
+
+--
+
+.left[.footnote[The text on this slide is centered and in the middle of the slide because the slide began with:
+```
+---
+class: center, middle
+```
+
+]]
+
+---
+class: sydney-yellow
+
+## Two columns! `r icon::fa("columns", pull = "right")`
+
+.pull-left[
+
+### Some things on the left
+
+1. List of things;
+
+1. Plain Markdown;
+
+1. blah blah; and
+
+1. Plain Markdown
+
+]
+
+--
+
+.pull-right[
+
+### and other things on the right
+
+We do this by using the `.pull-left[]` and `.pull-right[]` commands. Just put any text inside the  brackets and you're good to go
+
+]
+
+Code below (or above) these two has no problem extending the full width of the slide.
+
+.footnote[The background of this slide is Sydney University Yellow because the slide began with:
+```
+---
+class: sydney-yellow
+```
+]
+
+---
+
+## R code and highlighting `r icon::fa("r-project", pull = "right")`
+
+.pull-left[
+An example using a leading `*`:
+
+    ```r
+    if (TRUE) {
+    ** message("Very important!")
+    }
+    ```
+Output:
+```r
+if (TRUE) {
+* message("Very important!")
+}
+```
+
+This is invalid R code, so it is a plain fenced code block that is not executed.
+]
+
+.pull-right[
+An example using `{{}}`:
+
+    `r ''````{r tidy=FALSE}
+    if (TRUE) {
+    *{{ message("Very important!") }}
+    }
+    ```
+Output:
+```{r tidy=FALSE}
+if (TRUE) {
+{{ message("Very important!") }}
+}
+```
+
+It is valid R code so you can run it.
+]
+
+
+---
+
+## R code and plot output `r icon::fa("r-project", pull = "right")`
+
+```{r, fig.height=4.5, fig.width=12, fig.retina=2, fig.align='center', message=FALSE, warning=FALSE}
+library("tidyverse")
+cars %>% 
+  ggplot(aes(x = dist, y = speed)) + 
+  geom_point() + 
+{{ geom_smooth(method = 'lm', # highlighted using {{...}}
+             formula = y ~ poly(x, 2))}} + 
+  theme_bw(base_size = 24) + 
+  labs(y = "Speed (mph)", x = "Stopping distance (ft)")
+```
+
+
+---
+class: middle, bottom
+background-image: url("assets/USydLogo.svg")
+background-size: 50%
+background-position: 90% 10%
+
+
+This slide starts with 
+
+```
+---
+class: middle, bottom
+background-image: url("assets/USydLogo.svg")
+background-size: 50%
+background-position: 90% 10%
+```
+
+If you want the background image to take up the full slide use
+
+```
+---
+class: middle, bottom
+background-image: url("assets/USydLogo.svg")
+*background-size: contain
+*background-position: 50% 50%
+```
+
+---
+class: segue
+
+# Next section
+
+
+.left[.footnote[
+
+```
+---
+class: segue
+```
+
+]]
+
+
+---
+class: segue-red
+
+# Next section
+
+
+.left[.footnote[
+
+```
+---
+class: segue-red
+```
+
+]]
+
+
+
+---
+class: segue-yellow
+background-image: url("assets/USydLogo.svg")
+background-size: 20%
+background-position: 95% 95%
+
+# Next section
+
+
+.left[.footnote[
+
+```
+---
+class: segue-yellow
+background-image: url("assets/USydLogo.svg")
+background-size: 20%
+background-position: 95% 95%
+```
+
+]]
+
+
+---
+class: sydney-blue
+
+## Title for sydney-blue class
+
+text here
+
+.footnote[
+
+```
+---
+class: sydney-blue
+```
+
+]
+
+---
+class: sydney-red
+
+## .white[Title for sydney-red class]
+
+text here
+
+.footnote[
+
+```
+---
+class: sydney-red
+```
+
+]
+
+---
+class: sydney-yellow
+
+## Title for sydney-yellow class
+
+text here
+
+.footnote[
+
+```
+---
+class: sydney-yellow
+```
+
+]
+
+---
+
+## Title slide image
+
+.small[
+I don't have a good solution for the title slide image.  I considered hard coding it to look for a file called `title-image.jpg` in the same folder as the `sydney.css` file. This is possible and if this file is missing, it's no problem, it just won't show an image.  The image would be hardcoded to be stretched the full height of the title slide and to only take up 50% of the width.  But I decided this was less than optimal.
+
+In the longer term, I'd like to make this more general, being able to specify the file path in the yaml along with the size and position.  I'd also like to be able to specify the background colour.  But I have no idea if this is technically feasible or not.
+
+In the iterim, you can specify `seal: false` in the yaml to disable the default title slide and create your own.  For example:
+]
+
+.code70[
+
+```
+---
+class: title-slide
+background-image: url("assets/USydLogo-black.svg"), url("assets/title-image2.jpg")
+background-position: 10% 90%, 100% 50%
+background-size: 160px, 100% 100%
+
+# .black[Manual title slide]
+
+## Subtitle
+
+### Author
+
+### Date
+```
+
+]
+
+
+
+---
+class: title-slide
+background-image: url("assets/USydLogo.svg"), url("assets/title-image1.jpg")
+background-position: 10% 90%, 100% 50%
+background-size: 160px, 100% 100%
+
+# .text-shadow[.black[Manual title slide (title-image.1)]]
+
+## Subtitle
+
+### Author
+
+### Date
+
+
+---
+class: title-slide
+background-image: url("assets/USydLogo-white.svg"), url("assets/title-image1.jpg")
+background-position: 10% 90%, 100% 50%
+background-size: 160px, 50% 100%
+background-color: #0148A4
+
+
+# .text-shadow[.white[Manual title slide]]
+
+## .white[Subtitle]
+
+### .white[Author]
+
+### .white[Date]
+
+---
+class: title-slide
+background-image: url("assets/USydLogo-black.svg"), url("assets/title-image2.jpg")
+background-position: 10% 90%, 100% 50%
+background-size: 160px, 100% 100%
+
+# .text-shadow[.black[Manual title slide]]
+
+## Subtitle
+
+### Author
+
+### Date
+
+---
+
+## Example YAML
+
+.code70[
+
+```r
+---
+title: "Xaringan"
+subtitle: "A theme for the <br>University of Sydney"
+author: "Garth Tarr"
+date: "15 May 2018"
+output:
+  xaringan::moon_reader:
+    css: ["default", "assets/sydney-fonts.css", "assets/sydney.css"]
+    self_contained: false # if true, fonts will be stored locally
+    seal: true # show a title slide with YAML information
+    includes:
+      in_header: "assets/mathjax-equation-numbers.html"
+    nature:
+      beforeInit: ["assets/remark-zoom.js", "https://platform.twitter.com/widgets.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '4:3' # alternatives '16:9' or '4:3' or others e.g. 13:9
+      navigation:
+        scroll: false # disable slide transitions by scrolling
+---
+class: title-slide
+background-image: url("assets/USydLogo-white.svg"), url("assets/title-image1.jpg")
+background-position: 10% 90%, 100% 50%
+background-size: 160px, 50% 100%
+background-color: #0148A4
+
+# Manually specify title here
+
+## Manually specify subtitle here
+
+### Manually specify author here
+
+### Manually specify date here
+```
+
+]
+
+---
+
+## Font sizes
+
+.pull-left[
+
+.pull-left[
+.font10[.font10]
+.font20[.font20]
+.font30[.font30]
+.font40[.font40]
+.font50[.font50]
+.font60[.font60]
+.font70[.font70]
+.font80[.font80]
+.font90[.font90]
+Standard
+.font110[.font110]
+.font120[.font120]
+.font130[.font130]
+.font140[.font140]
+.font150[.font150]
+.font160[.font160]
+.font170[.font170]
+.font180[.font180]
+.font190[.font190]
+.font200[.font200]
+
+]
+
+.pull-right[
+
+.code10[`.code10[]`]
+.code20[`.code20[]`]
+.code30[`.code30[]`]
+.code40[`.code40[]`]
+.code50[`.code50[]`]
+.code60[`.code60[]`]
+.code70[`.code70[]`]
+.code80[`.code80[]`]
+.code90[`.code90[]`]
+`standard`
+.code110[`.code110[]`]
+.code120[`.code120[]`]
+.code130[`.code130[]`]
+.code140[`.code140[]`]
+.code150[`.code150[]`]
+.code160[`.code160[]`]
+.code170[`.code170[]`]
+.code180[`.code180[]`]
+.code190[`.code190[]`]
+.code200[`.code200[]`]
+
+]
+
+]
+
+.pull-right[
+
+I've also enabled an alternate approach, that operates on all text: inline code, code chunks and regular text.
+
+.Large[.Large `.Large[]` 144%]
+
+.large[.large `.large[]` 120%]
+
+.small[.small `.small[]` 90%]
+
+.footnotesize[.footnotesize `.footnotesize[]` 80%] 
+
+.scriptsize[.scriptsize `.scriptsize[]` 70%] 
+
+.tiny[.tiny `.tiny[]` 60%]
+
+]
+
+
+---
+
+## Font sizes
+
+This is normal sized and coloured text. With a normal size code and output:
+
+```{r}
+rnorm(2)
+```
+
+.blue[.small[This blue text is in a `.blue[.small[...]]` chunk. Everything is shrunk to 90% including the `inline code` as well as code chunks and their output:
+
+```{r}
+rnorm(2)
+```
+
+]]
+
+---
+class: columns-2
+
+## Equations
+
+
+MathJax is supported out of the box.  You can put inline equations inside dollar signs, e.g. `$\alpha + \beta$` renders as $\alpha + \beta$.   Display style works with double dollar signs: 
+
+<span>`$`</span><span>`$`</span>`\bar{X} = \frac{1}{n} \sum_{i=1}^n X_i`<span>`$`</span><span>`$`</span>
+$$\bar{X} = \frac{1}{n}\sum_{i=1}^n X_i$$
+For multi-line equations you can use <span>`\`</span>`begin{align} ...  `</span>`\`</span>`end{align}`
+\begin{align}
+\bar{X} & = X_1 + X_2 + \ldots + X_n \nonumber \\
+ & = \frac{1}{n}\sum_{i=1}^nX_i \label{good-eq}
+\end{align}
+Note the equation number! We can reference it in the usual way, using <span>`\`</span>`eqref{label}`, \eqref{good-eq}, or <span>`\`</span>`ref{label}`, \ref{good-eq}.
+
+---
+
+## Equation numbering
+
+Equation numbering isn't part of the standard xaringan package but I've included it with the Sydney theme.  This is enabled with the inclusion of the `in_header` line in the YAML with reference to the file `mathjax-equation-numbers.html` which needs to be in an appropriate location.
+
+```
+output:
+  xaringan::moon_reader:
+    includes:
+*      in_header: "assets/mathjax-equation-numbers.html"
+```
+
+---
+
+## Central limit theorem 
+
+
+Let $X_{1}, X_{2},\ldots$ be independent random variables with characteristic functions $\phi_{1},\phi_{2},\ldots$ and distribution functions $F_{1},F_{2},\ldots$ and let $\mathbb{E} X_{i}=0$ and $\mathbb{E} X_{i}^{2}=\sigma_{i}^{2}<\infty$, $i=1,2,\ldots$.
+
+Write $S_{n} = \sum_{i=1}^{n}X_{i}$ and $s_{n}=\textrm{Var}(S_{n}) = \sum_{i=1}^{n}\sigma^{2}_{i}$.  Let
+\begin{align}
+L_{n}(\varepsilon) & = s^{-2}_{n}\sum_{i=1}^{n}\mathbb{E}\big[ X_{i}^{2}\mathbb{I}\big(|X_{i}|>\varepsilon s_{n}\big)\big] \nonumber \\
+& = s_{n}^{-2}\sum_{i=1}^{n}\int_{|x|>\varepsilon s_{n}}x^{2}\operatorname{d}F_{n}(x)
+\end{align}
+The _Lindeberg condition_ states:
+$$\begin{equation}\text{for all } \varepsilon>0,\ L_{n}(\varepsilon)\rightarrow0 \text{ as }n\rightarrow\infty.\label{LindCond}\end{equation}$$
+If $\mathbb{E}|X_{1}|^{3}<\infty$ and $s_{n}^{-3}\sum_{i=1}^{n}\mathbb{E}|X_{i}^{3}|\rightarrow 0$ as $n\rightarrow\infty$ then Lindeberg's condition holds.  This condition under which the Lindeberg's condition holds is known as Liapounov's condition \eqref{LindCond}.
+
+
+---
+
+# Tables
+
+.pull-left[
+
+- Tables are centered by default in **xaringan**. 
+- We can override this using `.pull-left[]` and 
+  `.pull-right[]`
+
+
+
+
+|  This |  is |   a    |    table     |
+| :---- | :-- | -----: | :----------: |
+| It is | now | pulled | to the left  |
+| 12    | 34  | 56     |      78      |
+
+]
+
+.pull-right[
+```{r, eval = FALSE}
+knitr::kable(iris[1:10, 1:4], 
+             format = "html")
+```
+.small[
+```{r, echo = FALSE}
+colnames(iris) = gsub(pattern = "\\.",
+                      replacement = " ", 
+                      colnames(iris))
+knitr::kable(iris[1:10, 1:4], format = "html")
+```
+]
+]
+
+---
+
+## Citations and references `r icon::fa("book", pull="right")`
+
+.pull-left[
+Xaringan doesn't support bibliographies in the usual markdown way (i.e. specifying a bibtex file in the yaml).
+
+It is possible to cite sources from a `.bib` file using the **RefManageR** package.  To do this, specify the `BibOptions()`:
+
+.small[
+```{r, eval = FALSE}
+library(RefManageR)
+BibOptions(
+  check.entries = FALSE, 
+  bib.style = "authoryear", 
+  cite.style = "authoryear", 
+  style = "markdown",
+  hyperlink = FALSE, 
+  dashed = FALSE)
+{{myBib = ReadBib("myBib.bib")}}
+```
+]
+]
+
+
+.pull-right[
+
+
+
+Make sure you update the highlighted line.
+
+Then you can cite any entry from your `.bib` file inline using `Citet()`, `Citep()`, `AutoCite()`, etc. (see [RefManageR](https://github.com/ropensci/RefManageR)). 
+
+
+- `r Citet(myBib,"Tarr:2016csda")`
+- `r Citep(myBib,"Tarr:2016csda")`
+
+]
+
+---
+
+## Reference list
+
+
+To generate your bibliography, use the `PrintBibliography()` function inside a knitr chunk with options `results='asis', echo=FALSE`. The function will search the entire `.Rmd` document for your citations and include them in the output. 
+
+```{r, results = "asis", echo=FALSE}
+PrintBibliography(myBib)
+```
+
+If you have a long list of references, and want to split them over multiple slides, you can use the `start` and `end` arguments to the `PrintBibliography()` function.  E.g.
+
+.small[
+`PrintBibliography(bib, start=1, end=7)`
+]
+
+---
+
+## Embedding tweets
+.pull-left[
+1. Get the link to embed the tweet from twitter.
+
+2. Paste it into your slides.
+
+3. Make sure the highlighted code from below is is in your YAML
+
+.footnote[.small[
+```
+output:
+  xaringan::moon_reader:
+    nature:
+*      beforeInit: ["assets/remark-zoom.js", "https://platform.twitter.com/widgets.js"]
+```
+]]
+]
+
+.pull-right[
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Finally finished documenting the xaringan pkg for Rmd/remark.js-based slides w/ another weekend <a href="https://t.co/1mkJYj13WR">https://t.co/1mkJYj13WR</a> Now I can sleep well <a href="https://t.co/k6hj6xDrwF">pic.twitter.com/k6hj6xDrwF</a></p>&mdash; Yihui Xie (@xieyihui) <a href="https://twitter.com/xieyihui/status/808418548829847552?ref_src=twsrc%5Etfw">December 12, 2016</a></blockquote>
+]
+
+
+
+---
+class: sydney-blue
+background-image: url(assets/USydLogo-white.svg)
+background-size: 260px
+background-position: 5% 95%
+
+# Thanks!
+
+.pull-right[.pull-down[
+
+<a href="mailto:garth.tarr@sydney.edu.au">
+.white[`r icon::fa("paper-plane")` garth.tarr@sydney.edu.au]
+</a>
+
+<a href="http://garthtarr.github.io/sydney_xaringan">
+.white[`r icon::fa("link")` garthtarr.github.io/sydney_xaringan]
+</a>
+
+<a href="http://twitter.com/garthtarr">
+.white[`r icon::fa("twitter")` @garthtarr]
+</a>
+
+<a href="http://github.com/garthtarr">
+.white[`r icon::fa("github")` @garthtarr]
+</a>
+
+<br><br><br>
+
+]]

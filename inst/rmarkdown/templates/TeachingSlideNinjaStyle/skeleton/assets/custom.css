@@ -1,0 +1,21 @@
+/* add custom.css here */
+
+.outline_text {
+  background: -webkit-linear-gradient(-86deg, black, black);
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 10px transparent;
+}
+
+.shade_black  {
+    background-color: rgb(0, 0, 0, 0.7);
+    color: white;
+    width: 100%;
+    padding: 0;
+}
+
+.bg-brand-red { background-color: #e64626; }
+.bg-brand-blue { background-color: #0148A4; }
+.bg-brand-yellow { background-color: #FFB800; }
+.bg-brand-charcoal { background-color: #424242; }
+.bg-brand-gray { background-color: #F1F1F1;}
+.bg-brand-grey { background-color: #F1F1F1;}

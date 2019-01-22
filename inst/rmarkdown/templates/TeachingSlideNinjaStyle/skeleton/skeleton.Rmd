@@ -1,0 +1,114 @@
+---
+title: "How to use ninpo"
+subtitle: "First step to being a hokage"
+author: "Naruto Uzumaki"
+email: "naruto.uzumaki@sydney.edu.au"
+date: "2019/01/01"
+params:
+  titlebgimg: "assets/title-image2.jpg"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["shinobi", "ninjutsu", "assets/sydney-fonts.css", "assets/sydney.css", "assets/custom.css"]
+    seal: false 
+    self_contained: false
+    nature:
+      ratio: "16:9"
+      highlightStyle: github
+      highlightLangauge: r
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r, include=F}
+library(tidyverse)
+knitr::opts_chunk$set(comment=" ")
+skimr::skim_with(factor = list(top_counts = NULL, complete=NULL),
+                 integer = list(complete=NULL))
+```
+```{r include=F, dev='svg', dev.args=list(bg = "transparent")}
+invthm <- theme_minimal() + 
+  theme(
+    panel.background = element_rect(fill = "transparent", colour = NA), 
+    plot.background = element_rect(fill = "transparent", colour = NA),
+    legend.background = element_rect(fill = "transparent", colour = NA),
+    legend.key = element_rect(fill = "transparent", colour = NA),
+    text = element_text(colour = "white"),
+    axis.text = element_text(colour = "white")
+  )
+```
+
+class: split-50 with-border white hide-slide-number bg-black
+background-image: url(`r params$titlebgimg`)
+background-size: cover
+
+.column.outline_text[.content[
+<br><br><br>
+
+# .brand-yellow[`r rmarkdown::metadata$title`]
+## `r rmarkdown::metadata$subtitle`
+
+.bottom_abs.width100.outline_text[
+## Lecturer: .brand-yellow[`r rmarkdown::metadata$author`]
+
+### `r rmarkdown::metadata$date`
+
+]]]
+
+.column.shade_black[.content[
+# <u>Today you will learn</u>
+
+* What they will learn
+* Write a list to remind your students the purpose of this lecture and what they should be achieving
+
+]]
+
+
+
+
+---
+
+class: middle, center, bg-gray, white
+
+# This slides use the feature of the
+
+
+# [Emi's `ninja-theme`](https://emitanaka.github.io/ninja-theme) *and* 
+
+# [Garth's Sydney `xaringan` theme](https://garthtarr.github.io/sydney_xaringan/#1). 
+
+<br>
+
+## Click on above to check out how those theme work.
+
+---
+
+layout: true
+class: split-60
+
+.column.bg-brand-red.white[.content[
+# Summary 
+
+* Ninja must preserve.
+* Ninja must live in the shadow.
+
+
+]]
+.column[.content[
+# Next lesson
+
+* The list of exciting things to learn
+]]
+
+---
+
+class: show-10
+
+---
+
+count: false

@@ -1,0 +1,107 @@
+---
+title: "How to go to the dark side"
+subtitle: "My experience"
+author: "Sasuke Uchiha"
+school: "School of Mathematics and Statistics"
+email: "sasuke.uchiha@sydney.edu.au"
+date: "2019/01/10"
+params:
+  titlebgimg: "assets/title-image2.jpg"
+  endbgimg: "assets/title-image2.jpg"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["shinobi", "ninjutsu", "assets/sydney-fonts.css", "assets/sydney.css", "assets/custom.css"]
+    seal: false 
+    self_contained: false
+    nature:
+      beforeInit: "assets/custom.js"
+      ratio: "16:9"
+      highlightStyle: github
+      highlightLangauge: r
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(knitr)
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(comment=" ")
+```
+
+class: split-50 with-border white hide-slide-number bg-black
+background-image: url(`r params$titlebgimg`)
+background-size: cover
+
+.column.outline_text[.content[
+<br><br><br>
+
+# .brand-yellow[`r rmarkdown::metadata$title`]
+## `r rmarkdown::metadata$subtitle`
+
+.bottom_abs.width100.outline_text[
+## Presenter: .brand-yellow[`r rmarkdown::metadata$author`]
+### `r rmarkdown::metadata$school`
+### `r rmarkdown::metadata$date`
+
+]]]
+
+.column.shade_black[.content[
+# <u>Outline</u>
+
+]]
+
+<img src="assets/USydLogo-white.svg" style="position:absolute; bottom:2%; right:2%; width:200px">
+
+
+---
+
+class: middle, center, bg-gray, white
+
+# This slides use the feature of the
+
+
+# [Emi's `ninja-theme`](https://emitanaka.github.io/ninja-theme) *and* 
+
+# [Garth's Sydney `xaringan` theme](https://garthtarr.github.io/sydney_xaringan/#1). 
+
+<br>
+
+## Click on above to check out how those theme work.
+
+
+---
+
+class: split-50 with-border white hide-slide-number 
+background-image:  url(`r params$endbgimg`)
+background-size: cover
+
+.column[.content.outline_text[
+
+
+]]
+
+
+.column.shade_black[.content[
+<marquee direction="up" width="100%" height="450px" style="padding:20px">
+  These slides are made using the statistical software environment .yellow[R] with the .yellow[xaringan] package. <br>
+<u><b>References</b></u>
+<ul style="padding-left:20p;padding-right:20px">
+<li>Norman, Taylor, Tanaka, et al. (2017) Increased genomic prediction accuracy in wheat breeding using a large Australian panel. <i>Theoretical and Applied Genetics</i>. 130 (12) 2543-2555</li>
+<li>Hui, Tanaka & Warton (2018) Order selection and sparsity in latent variable models via the ordered factor LASSO. <i>Biometrics</i>.</li>
+<li>Tanaka, Ral, Li, et al. (2017) Increased accuracy of starch granule type quantification using mixture distributions. <i>Plant Methods</i>. 13(1), 107</li>
+</ul>
+</marquee>
+
+##  `r rmarkdown::metadata$author`
+### `r rmarkdown::metadata$school`
+### `r icon::fa("paper-plane")` &nbsp;`r rmarkdown::metadata$email`
+
+
+]]
+
+
+<img src="assets/USydLogo-white.svg" style="position:absolute; top:73%; left:80%;width:180px">
+
