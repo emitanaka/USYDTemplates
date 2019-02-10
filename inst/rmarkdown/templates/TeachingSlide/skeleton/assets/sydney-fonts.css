@@ -25,6 +25,14 @@ h1, h2, h3 {
   font-size: 95%;
 }
 
+ /* inline code background */
+ .remark-inline-code {
+  /* background: #F5F5F5; /* lighter */
+  /* background: #e7e8e2; /* darker */
+  border-radius: 3px;
+  padding: 2px;
+}
+
 .hljs-github .hljs {
   overflow-y: auto;
 }
@@ -32,6 +40,8 @@ h1, h2, h3 {
 .remark-code-line {
   font-size: 80%;
 }
+
+
 
 
 /* change the line spread for readability

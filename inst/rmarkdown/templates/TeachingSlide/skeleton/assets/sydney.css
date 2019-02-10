@@ -7,7 +7,7 @@
   padding-right: 50px;
   padding-bottom: 25px;
 }
-/* 
+/*
 To specify the margin of the first title h1
 */
 .remark-slide-content > h1:first-of-type {
@@ -30,7 +30,7 @@ To specify the margin of the first title h1
 
 
 /*************************
-  Custom classes 
+  Custom classes
 **************************/
 
 .pull-left-2 {
@@ -123,9 +123,9 @@ it from other content slides */
 }
 
 /* link colour */
-a { 
-    color: #0148A4; 
-} 
+a {
+    color: #0148A4;
+}
 
 .columns-2 {
   -webkit-columns: 2;
@@ -194,25 +194,10 @@ slides > slide {
   overflow-y: scroll;
 }
 
-
-
- 
- /* inline code background */
- .remark-inline-code {
-   /* until the link between code and mathjax 
-   is broken, we need to use transparent */
-  background: transparent; /* #F5F5F5; /* lighter */
-  /* background: #e7e8e2; /* darker */
-  border-radius: 3px;
-  padding: 2px;
-}
-
-
-
 /******************
  * Coloured content boxes
  ****************/
-.content-box { 
+.content-box {
     box-sizing: border-box;
     background-color: #e2e2e2;
 }
@@ -247,7 +232,7 @@ slides > slide {
 .content-box-green .remark-inline-code,
 .content-box-purple .remark-inline-code,
 .content-box-red .remark-inline-code,
-.content-box-yellow .remark-inline-code { 
+.content-box-yellow .remark-inline-code {
   background: none;
 }
 
@@ -282,14 +267,14 @@ slides > slide {
 .rotate-left {
     -webkit-transform: rotate(-2deg);
     -moz-transform: rotate(-2deg);
-    transform: rotate(-2deg); 
+    transform: rotate(-2deg);
 }
 .rotate-right {
     -webkit-transform: rotate(2deg);
     -moz-transform: rotate(2deg);
-    transform: rotate(2deg);     
+    transform: rotate(2deg);
 }
-/********** 
+/**********
  * Image stuff
  ************/
 .polaroid img {
@@ -304,7 +289,7 @@ slides > slide {
     -moz-box-shadow: 5px 5px 5px #aaa;
     -webkit-box-shadow: 5px 5px 5px #aaa;
     box-shadow: 5px 5px 5px #aaa;
-    border-radius: 2px;  
+    border-radius: 2px;
 }
 
 
@@ -354,7 +339,7 @@ slides > slide {
 /*
 }
 */
- 
+
 .title-slide {
   background-image: url(USydLogo-black.svg);
   /* background-image: url(https://sydney.edu.au/etc/designs/corporate-commons/bower_components/corporate-frontend/dist/assets/img/USydLogo.svg); */
@@ -463,14 +448,14 @@ https://github.com/yihui/xaringan/tree/master/inst/rmarkdown/templates/xaringan/
 
 
 
-/* 
-Masterbrand charcoal #424242; 
-C=0 M=0 Y=0 K=90 
-R=66 G=66 B=66 
+/*
+Masterbrand charcoal #424242;
+C=0 M=0 Y=0 K=90
+R=66 G=66 B=66
 
 Masterbrand red #e64626;
 C=0 M=0 Y=0 K=90
-R=66 G=66 B=66 
+R=66 G=66 B=66
 
 Masterbrand white #ffffff;
 C=0 M=0 Y=0 K=0
@@ -482,13 +467,13 @@ R=10 G=10 B=10
 
 Accent yellow #FFB800
 C=0 M=25 Y=98 K=0
-R=255 G=184 B=0 
+R=255 G=184 B=0
 
 Accent blue #0148A4
 C=100 M=61 Y=0 K=0
-R=1 G=72 B=164 
+R=1 G=72 B=164
 
 Accent grey - supportive #F1F1F1
 C=0 M=0 Y=0 K=10
-R=241 G=241 B=241 
+R=241 G=241 B=241
 */
